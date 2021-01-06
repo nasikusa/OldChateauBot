@@ -22,7 +22,7 @@ if( process.env.DISCORD_TOKEN ){
   })
 } else {
   console.log('hogehoge')
-  client.login('Nzk2MjMwNjYyODU2MjQ1Mjc4.X_U5lw.DdKmAHmFLmXBMhtMX-PdHnThcf0').catch(err => {
+  client.login().catch(err => {
     console.log(err);
   })
   console.log('hogehoge done')
