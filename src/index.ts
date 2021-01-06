@@ -15,6 +15,12 @@ client.on('message', msg => {
   omikuji.doOmikuji();
 })
 
-client.login( process.env.DISCORD_TOKEN ? process.env.DISCORD_TOKEN : undefined ).catch(err => {
-  console.log(err);
-})
+if( process.env.DISCORD_TOKEN ){
+  client.login( process.env.DISCORD_TOKEN ).catch(err => {
+    console.log(err);
+  })
+} else {
+  client.login().catch(err => {
+    console.log(err);
+  })
+}
