@@ -1,4 +1,5 @@
 import { Client } from 'discord.js';
+import HTTPCats from './HTTPCats';
 import Omikuji from './Omikuji';
 import Shiba from './Shiba';
 // import dotenv from 'dotenv';
@@ -14,10 +15,13 @@ client.on('ready', () => {
 client.on('message', msg => {
   const omikuji = new Omikuji( msg );
   const shiba = new Shiba( msg );
+  const httpcats = new HTTPCats( msg );
   omikuji.doOmikuji();
   shiba.sendMsg().catch(err => {
     console.log(err);
-  })
+  });
+  httpcats.showList();
+  httpcats.sendMsg();
 })
 
 if( process.env.DISCORD_TOKEN ){
