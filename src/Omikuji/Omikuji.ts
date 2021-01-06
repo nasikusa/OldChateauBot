@@ -4,6 +4,8 @@ export default class Omikuji {
   count: number;
   targetMsg: string;
   results: string[];
+  prefixs: string[];
+  suffixs: string[];
   msg: Message;
 
   constructor(msgObject: Message) {
@@ -11,6 +13,8 @@ export default class Omikuji {
     this.targetMsg = 'おみくじ';
     this.msg = msgObject;
     this.results = ['大凶', '凶', '末吉', '小吉', '中吉', '吉', '大吉'];
+    this.prefixs = ['あなたの運勢は、', 'うんせいは、' , 'じゃらじゃらじゃら～!' , '' , '2021ねんの運勢は、'];
+    this.suffixs = ['です!' , 'だよ～' , 'なんだなぁ' , 'でござるよ' , 'ですねぇ' , '!!!!!!' , 'です～', 'です']
   }
   setCount(count: number): void {
     this.count = count;
@@ -25,7 +29,7 @@ export default class Omikuji {
       for (const [index, omikujiResult] of this.results.entries()) {
         if (randomNumber < (1 * (index + 1)) / omikujiResultLength) {
           this.msg.channel
-            .send(`あなたの運勢は、${omikujiResult}です～`)
+            .send(`${this.prefixs[Math.floor(Math.random() * this.prefixs.length)]}${omikujiResult}${this.suffixs[Math.floor(Math.random() * this.prefixs.length)]}`)
             .catch((err) => {
               console.log(err);
             });
