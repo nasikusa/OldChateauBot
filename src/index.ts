@@ -20,7 +20,7 @@ if( process.env.DISCORD_TOKEN ){
     console.log(err);
   })
 } else {
-  client.login().catch(err => {
+  client.login('Nzk2MjMwNjYyODU2MjQ1Mjc4.X_U5lw.DdKmAHmFLmXBMhtMX-PdHnThcf0').catch(err => {
     console.log(err);
   })
 }
