@@ -14,14 +14,14 @@ export default class Shiba {
   async getImageURL(): Promise<string> {
     const response = await fetch(this.apiEndPoint);
     const resultData = await response.json() as string[];
-    console.log(resultData);
     return resultData[0];
   }
   async sendMsg(): Promise<void> {
     if ( this.targetMsg.includes(this.msg.content)) {
       const imageUrl = await this.getImageURL();
       this.msg.channel
-      .send(imageUrl)
+      .send(`${this.msg.content}の画像をお届けします～  ∪･ω･∪
+${imageUrl}`)
       .catch((err) => {
         console.log(err);
       });
