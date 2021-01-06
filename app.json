@@ -1,0 +1,22 @@
+{
+  "name": "no-name",
+  "description": "",
+  "repository": "https://github.com/nasikusa/OldChateauBot",
+  "keywords": [
+    "Discord.js",
+    "Node.js",
+    "TypeScript",
+    "Discord",
+    "Bot"
+  ],
+  "formation": {
+    "web": {
+      "quantity": 0,
+      "size": "free"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
