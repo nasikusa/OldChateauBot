@@ -1,5 +1,6 @@
 import { Client } from 'discord.js';
 import Omikuji from './Omikuji';
+import Shiba from './Shiba';
 // import dotenv from 'dotenv';
 const client = new Client();
 // dotenv.config();
@@ -12,7 +13,11 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   const omikuji = new Omikuji( msg );
+  const shiba = new Shiba( msg );
   omikuji.doOmikuji();
+  shiba.sendMsg().catch(err => {
+    console.log(err);
+  })
 })
 
 if( process.env.DISCORD_TOKEN ){
