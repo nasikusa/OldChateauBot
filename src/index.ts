@@ -16,11 +16,14 @@ client.on('message', msg => {
 })
 
 if( process.env.DISCORD_TOKEN ){
+  console.log('discord_token')
   client.login( process.env.DISCORD_TOKEN ).catch(err => {
     console.log(err);
   })
 } else {
+  console.log('hogehoge')
   client.login('Nzk2MjMwNjYyODU2MjQ1Mjc4.X_U5lw.DdKmAHmFLmXBMhtMX-PdHnThcf0').catch(err => {
     console.log(err);
   })
+  console.log('hogehoge done')
 }
