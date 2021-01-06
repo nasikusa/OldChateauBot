@@ -1,8 +1,8 @@
 import { Client } from 'discord.js';
 import Omikuji from './Omikuji';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 const client = new Client();
-dotenv.config();
+// dotenv.config();
 
 client.on('ready', () => {
   if( client.user != null ) {
