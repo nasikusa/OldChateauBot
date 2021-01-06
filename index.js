@@ -28,7 +28,7 @@ class Omikuji {
       const omikujiResultLength = this.result.length;
       for( const [index , omikujiResult] of this.result.entries() ){
         if( randomNumber < 1 * (index + 1) / omikujiResultLength ){
-          this.msg.channel.send(omikujiResult);
+          this.msg.channel.send(`あなたの運勢は、${omikujiResult}です`);
           break;
         }
       }
