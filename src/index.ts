@@ -2,6 +2,7 @@ import { Client } from 'discord.js';
 import HTTPCats from './HTTPCats';
 import Omikuji from './Omikuji';
 import Shiba from './Shiba';
+import Talk from './Talk';
 // import dotenv from 'dotenv';
 import Cats from './Cats';
 const client = new Client();
@@ -17,6 +18,7 @@ client.on('message', msg => {
   const omikuji = new Omikuji( msg );
   const shiba = new Shiba( msg );
   const httpcats = new HTTPCats( msg );
+  const talk = new Talk( msg );
   const cats = new Cats( msg );
   omikuji.doOmikuji();
   shiba.sendMsg().catch(err => {
@@ -27,6 +29,9 @@ client.on('message', msg => {
   });
   httpcats.showList();
   httpcats.sendMsg();
+  talk.sendMsg().catch(err => {
+    console.log(err);
+  })
 })
 
 if( process.env.DISCORD_TOKEN ){
