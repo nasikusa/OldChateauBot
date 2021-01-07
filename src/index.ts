@@ -3,6 +3,7 @@ import HTTPCats from './HTTPCats';
 import Omikuji from './Omikuji';
 import Shiba from './Shiba';
 // import dotenv from 'dotenv';
+import Cats from './Cats';
 const client = new Client();
 // dotenv.config();
 
@@ -16,8 +17,12 @@ client.on('message', msg => {
   const omikuji = new Omikuji( msg );
   const shiba = new Shiba( msg );
   const httpcats = new HTTPCats( msg );
+  const cats = new Cats( msg );
   omikuji.doOmikuji();
   shiba.sendMsg().catch(err => {
+    console.log(err);
+  });
+  cats.sendMsg().catch(err => {
     console.log(err);
   });
   httpcats.showList();
