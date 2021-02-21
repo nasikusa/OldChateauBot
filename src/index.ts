@@ -1,10 +1,14 @@
 import { Client } from 'discord.js';
 import HTTPCats from './HTTPCats';
 import Omikuji from './Omikuji';
-import Shiba from './Shiba';
 import Talk from './Talk';
 // import dotenv from 'dotenv';
-import Cats from './Cats';
+// import Cats from './Cats';
+import CatImageURLMessage from './Image/Cat';
+import DogImageURLMessage from './Image/Dog';
+import FoxImageURLMessage from './Image/Fox';
+import ShibaImageURLMessage from './Image/Shiba';
+import DuckImageURLMessage from './Image/Duck';
 const client = new Client();
 // dotenv.config();
 
@@ -15,18 +19,21 @@ client.on('ready', () => {
 })
 
 client.on('message', msg => {
+  // console.log(msg);
   const omikuji = new Omikuji( msg );
-  const shiba = new Shiba( msg );
   const httpcats = new HTTPCats( msg );
   const talk = new Talk( msg );
-  const cats = new Cats( msg );
+  const catImageURLMessage = new CatImageURLMessage(msg);
+  const dogImageURLMessage = new DogImageURLMessage(msg);
+  const foxImageURLMessage = new FoxImageURLMessage(msg);
+  const shibaImageURLMessage = new ShibaImageURLMessage(msg);
+  const duckImageURLMessage = new DuckImageURLMessage(msg);
   omikuji.doOmikuji();
-  shiba.sendMsg().catch(err => {
-    console.log(err);
-  });
-  cats.sendMsg().catch(err => {
-    console.log(err);
-  });
+  catImageURLMessage.run().catch(err => console.log(err));
+  dogImageURLMessage.run().catch(err => console.log(err));
+  foxImageURLMessage.run().catch(err => console.log(err));
+  shibaImageURLMessage.run().catch(err => console.log(err));
+  duckImageURLMessage.run().catch(err => console.log(err));
   httpcats.showList();
   httpcats.sendMsg();
   talk.sendMsg().catch(err => {
