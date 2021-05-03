@@ -9,6 +9,7 @@ import DogImageURLMessage from './Image/Dog';
 import FoxImageURLMessage from './Image/Fox';
 import ShibaImageURLMessage from './Image/Shiba';
 import DuckImageURLMessage from './Image/Duck';
+import BaseRoleReact from './RoleReact/Base';
 const client = new Client();
 // dotenv.config();
 
@@ -40,6 +41,18 @@ client.on('message', msg => {
     console.log(err);
   })
 })
+
+client.on('messageReactionAdd', (messageReaction, user) => {
+  const baseRoleReact = new BaseRoleReact(messageReaction, user);
+  baseRoleReact.addRole();
+})
+
+client.on('messageReactionRemove', (messageReaction, user) => {
+  const baseRoleReact = new BaseRoleReact(messageReaction, user);
+  baseRoleReact.removeRole();
+})
+
+
 
 if( process.env.DISCORD_TOKEN ){
   client.login( process.env.DISCORD_TOKEN ).catch(err => {
