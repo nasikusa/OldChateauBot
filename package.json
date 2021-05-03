@@ -6,6 +6,7 @@
     "start": "node ./dist/index.js",
     "start:dev": "ts-node ./src/index.ts",
     "compile": "tsc -p .",
+    "compile:watch": "tsc --watch -p .",
     "compile:test": "tsc -p . --noEmit",
     "lint": "eslint --ext .ts --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .ts --ignore-path .gitignore . --fix",
