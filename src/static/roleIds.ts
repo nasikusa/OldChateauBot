@@ -1,3 +1,6 @@
+/**
+ * 絵文字でのロール付与と削除のためのオブジェクト型
+ */
 export type LocalRoleDataType = {
   name: string;
   id: string;
@@ -6,6 +9,9 @@ export type LocalRoleDataType = {
   targetEmoji: string;
 };
 
+/**
+ * 絵文字でのロール付与と削除のためのオブジェクト配列
+ */
 export const localRoles: LocalRoleDataType[] = [
   {
     name: 'amongus',
