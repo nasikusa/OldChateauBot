@@ -1,4 +1,7 @@
-export const roleChanellId = [
+/**
+ * ロール付与と削除をできるチャンネルのID配列
+ */
+export const roleChanellId: string[] = [
   '796040625539383336', // 開発用チャンネル
   '839029225272246302' // ロール管理チャンネル
 ];

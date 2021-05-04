@@ -1,8 +1,17 @@
 import { Message } from 'discord.js';
 import fetch from 'node-fetch';
 
+/**
+ * 反応するためのターゲットとなる単語の型
+ */
 type TargetMessageContentType = string | string[];
+/**
+ * データ取得用のAPIのURLの型
+ */
 type ApiEndPointType = string;
+/**
+ * ユーザーが入力した文字が、対象の文字とマッチするかどうかのマッチタイプ
+ */
 type MatchType = 'include' | 'exact' | 'startWith' | 'endWith';
 
 export default class BaseImageURLMessage {
@@ -73,6 +82,9 @@ export default class BaseImageURLMessage {
       }
     }
   }
+  /**
+   * 初期化関数
+   */
   init( apiUrl: ApiEndPointType , targetMessageContent: TargetMessageContentType, matchType: MatchType = 'exact'): this {
     this.setApiEndPoint(apiUrl);
     this.setTargetMessage(targetMessageContent);
@@ -82,11 +94,14 @@ export default class BaseImageURLMessage {
   async run(): Promise<void> {
     await this.sendDiscordBotMessage();
   }
+  /**
+   * 文字のマッチするタイプを変更するメソッド
+   */
   setMatchType(matchType: MatchType): void {
     this.matchType = matchType;
   }
   /**
-   *
+   * データを取得するAPIのURLをセットするメソッド
    * @param apiUrl
    * TODO クエリーを含めたURLもいけるようにしたいです
    */
@@ -94,7 +109,7 @@ export default class BaseImageURLMessage {
     this.apiEndPoint = apiUrl;
   }
   /**
-   *
+   * ボットが反応する対象となる文字をセットするメソッド
    * @param targetMessageContent
    */
   setTargetMessage(targetMessageContent: TargetMessageContentType): void {
@@ -104,6 +119,10 @@ export default class BaseImageURLMessage {
       this.targetMessageContent = targetMessageContent
     }
   }
+  /**
+   * ボットが反応する対象となる文字を追加するメソッド
+   * @param targetMessageContent
+   */
   addTargetMessage(targetMessageContent: TargetMessageContentType): void {
     if( typeof targetMessageContent === 'string' ) {
       this.targetMessageContent = [...this.targetMessageContent, targetMessageContent];
@@ -111,6 +130,9 @@ export default class BaseImageURLMessage {
       this.targetMessageContent = [...this.targetMessageContent, ...targetMessageContent];
     }
   }
+  /**
+   * ボットが反応する対象となる文字をすべて削除するメソッド
+   */
   deleteTargetMessage(): void {
     this.targetMessageContent = [];
   }
@@ -122,6 +144,10 @@ export default class BaseImageURLMessage {
     const resultData = await response.json() as string;
     return resultData
   }
+  /**
+   * ボットがテキストメッセージをチャンネルに送信するメソッド
+   * @param messageContent
+   */
   async sendDiscordBotMessage(messageContent: string = this.messageContent): Promise<void> {
     if (this.isMatch(messageContent)) {
       const imageUrl = await this.getImageURL();

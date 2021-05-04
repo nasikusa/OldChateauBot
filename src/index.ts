@@ -14,12 +14,14 @@ import { roleChanellId } from './static/roleReactIds';
 const client = new Client();
 // dotenv.config();
 
+// ボット起動時の処理
 client.on('ready', () => {
   if( client.user != null ) {
     console.log(`${client.user.username} でログインしています！`)
   }
 })
 
+// ユーザーからテキストメッセージが送られたときに発火
 client.on('message', msg => {
   const omikuji = new Omikuji( msg );
   const httpcats = new HTTPCats( msg );
@@ -42,23 +44,26 @@ client.on('message', msg => {
   })
 })
 
+// ユーザーから絵文字の追加リアクションが発生したときに発火
 client.on('messageReactionAdd', (messageReaction, user) => {
   const baseRoleReact = new BaseRoleReact(messageReaction, user, null, roleChanellId);
   baseRoleReact.addRole();
 })
 
+// ユーザーから絵文字の削除リアクションが発生したときに発火
 client.on('messageReactionRemove', (messageReaction, user) => {
   const baseRoleReact = new BaseRoleReact(messageReaction, user, null, roleChanellId);
   baseRoleReact.removeRole();
 })
 
-
-
+// ログイン処理
 if( process.env.DISCORD_TOKEN ){
+  // ローカル環境の場合はこちらの処理が走る (dotenvにて管理)
   client.login( process.env.DISCORD_TOKEN ).catch(err => {
     console.log(err);
   })
 } else {
+  // 本番環境の場合はこちらの処理が走る (トークンはheroku側で管理してもらっている)
   client.login().catch(err => {
     console.log(err);
   })
