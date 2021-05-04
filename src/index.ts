@@ -2,8 +2,7 @@ import { Client } from 'discord.js';
 import HTTPCats from './HTTPCats';
 import Omikuji from './Omikuji';
 import Talk from './Talk';
-// import dotenv from 'dotenv';
-// import Cats from './Cats';
+import dotenv from 'dotenv';
 import CatImageURLMessage from './Image/Cat';
 import DogImageURLMessage from './Image/Dog';
 import FoxImageURLMessage from './Image/Fox';
@@ -11,8 +10,17 @@ import ShibaImageURLMessage from './Image/Shiba';
 import DuckImageURLMessage from './Image/Duck';
 import BaseRoleReact from './RoleReact/Base';
 import { roleChanellId } from './static/roleReactIds';
+
 const client = new Client();
-// dotenv.config();
+/**
+ * 開発環境かどうかのフラグ
+ * @todo : 環境変数とかにしたい
+ */
+const DEV = false;
+
+if(DEV){
+  dotenv.config();
+}
 
 // ボット起動時の処理
 client.on('ready', () => {
