@@ -26,7 +26,7 @@ export const localRoles: LocalRoleDataType[] = [
     id: '799963782641745930',
     gameName: 'Sky 星を紡ぐ子どもたち',
     type: 'game',
-    targetEmoji: '⛅',
+    targetEmoji: '☁',
   },
   {
     name: 'unrailed',
