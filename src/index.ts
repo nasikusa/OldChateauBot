@@ -10,6 +10,7 @@ import FoxImageURLMessage from './Image/Fox';
 import ShibaImageURLMessage from './Image/Shiba';
 import DuckImageURLMessage from './Image/Duck';
 import BaseRoleReact from './RoleReact/Base';
+import { roleChanellId } from './static/roleReactIds';
 const client = new Client();
 // dotenv.config();
 
@@ -43,12 +44,12 @@ client.on('message', msg => {
 })
 
 client.on('messageReactionAdd', (messageReaction, user) => {
-  const baseRoleReact = new BaseRoleReact(messageReaction, user);
+  const baseRoleReact = new BaseRoleReact(messageReaction, user, null, roleChanellId);
   baseRoleReact.addRole();
 })
 
 client.on('messageReactionRemove', (messageReaction, user) => {
-  const baseRoleReact = new BaseRoleReact(messageReaction, user);
+  const baseRoleReact = new BaseRoleReact(messageReaction, user, null, roleChanellId);
   baseRoleReact.removeRole();
 })
 
