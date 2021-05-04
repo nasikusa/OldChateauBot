@@ -2,7 +2,7 @@ import { Client } from 'discord.js';
 import HTTPCats from './HTTPCats';
 import Omikuji from './Omikuji';
 import Talk from './Talk';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import CatImageURLMessage from './Image/Cat';
 import DogImageURLMessage from './Image/Dog';
 import FoxImageURLMessage from './Image/Fox';
@@ -19,7 +19,7 @@ const client = new Client();
 const DEV = false;
 
 if(DEV){
-  dotenv.config();
+  // dotenv.config();
 }
 
 // ボット起動時の処理
