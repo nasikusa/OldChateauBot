@@ -21,7 +21,6 @@ client.on('ready', () => {
 })
 
 client.on('message', msg => {
-  // console.log(msg);
   const omikuji = new Omikuji( msg );
   const httpcats = new HTTPCats( msg );
   const talk = new Talk( msg );
